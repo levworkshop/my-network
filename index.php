@@ -14,7 +14,7 @@
 </p>
 
 <p>
-    <a href="" class="btn btn-primary">Profile Page</a>
+    <a href="profile.php" class="btn btn-primary">Profile Page</a>
 </p>
 
 <?php include './include/footer.php' ?>
