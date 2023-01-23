@@ -1,6 +1,6 @@
 <?php
 
-require_once '../config/config.php';
+require_once dirname(__FILE__, 2) . '/config/config.php';
 
 class Database
 {
@@ -22,6 +22,22 @@ class Database
                 "error" => $err->getMessage()
             ]);
         }
+    }
+
+    public function selectRecords($sql)
+    {
+        $data = [];
+        $result = mysqli_query($this->db_conn, $sql);
+
+        if (!$result || mysqli_num_rows($result) === 0) {
+            return $data;
+        }
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $data[] = $row;
+        }
+
+        return $data;
     }
 
     public function runQuery($sql)
