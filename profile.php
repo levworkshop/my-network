@@ -16,7 +16,8 @@ include './include/header.php'
 
 $db = new Database();
 $db->connect();
-$result = $db->selectRecords('SELECT * FROM posts');
+$query = 'SELECT posts.id, posts.title, posts.last_update, posts.body, posts.image_url, posts.image_alt, users.name FROM posts LEFT JOIN users ON posts.user_id = users.id';
+$result = $db->selectRecords($query);
 $posts = [];
 
 foreach ($result as $item) {
@@ -24,7 +25,7 @@ foreach ($result as $item) {
         $item['id'],
         $item['title'],
         $item['last_update'],
-        $item['user_id'],
+        $item['name'],
         $item['body'],
     ));
 }
