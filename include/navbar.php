@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="http://localhost/my-network">
+            <a class="navbar-brand" href="/<?= basename(dirname(__FILE__, 2)) ?>">
                 <i class="bi-people-fill pe-1"></i>
                 My Network
             </a>
