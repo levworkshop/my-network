@@ -23,9 +23,11 @@ class Post
         return $this->$property;
     }
 
-    public function formatDate($date)
+    public function formatDate()
     {
-        return date('Y-m-d H:i:s', $date);
+        $time = strtotime($this->last_update);
+        $date = date('Y-m-d H:i:s', $time);
+        return $date;
     }
 }
 

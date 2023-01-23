@@ -46,7 +46,7 @@ foreach ($posts as $post) {
 
                 <small class="text-muted">
                     updated:
-                    {$post->get('last_update')}
+                    {$post->formatDate()}
                 </small>
             </div>
         </div>
