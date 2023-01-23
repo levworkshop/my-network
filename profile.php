@@ -17,24 +17,35 @@ include './include/header.php'
 $db = new Database();
 $db->connect();
 $result = $db->selectRecords('SELECT * FROM posts');
+$posts = [];
 
-foreach ($result as $post) {
+foreach ($result as $item) {
+    array_push($posts, new TextPost(
+        $item['id'],
+        $item['title'],
+        $item['last_update'],
+        $item['user_id'],
+        $item['body'],
+    ));
+}
+
+foreach ($posts as $post) {
     echo <<<CARD
         <div class="card text-start">
             <div class="card-header">
-                {$post['user_id']}
+                {$post->get('author')}
             </div>
             <div class="card-body">
                 <h5 class="card-title">
-                    {$post['title']}
+                    {$post->get('title')}
                 </h5>
                 <p class="card-text">
-                    {$post['body']}
+                    {$post->get('post_body')}
                 </p>
 
                 <small class="text-muted">
                     updated:
-                    {$post['last_update']}
+                    {$post->get('last_update')}
                 </small>
             </div>
         </div>

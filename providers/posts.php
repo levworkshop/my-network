@@ -2,14 +2,20 @@
 
 class Post
 {
-    public
+    protected
     $id, $title, $last_update, $author;
 
-    public function set($cfg)
+    function __construct($id, $title, $last_update, $author)
     {
-        foreach ($cfg as $key => $value) {
-            $this->$key = $value;
-        }
+        $this->id = $id;
+        $this->title = $title;
+        $this->last_update = $last_update;
+        $this->author = $author;
+    }
+
+    public function set($property, $value)
+    {
+        $this->$property = $value;
     }
 
     public function get($property)
@@ -17,31 +23,31 @@ class Post
         return $this->$property;
     }
 
-// protected function update($id, $title, $last_update, $author)
-// {
-//     // update class properties
-// }
+    public function formatDate($date)
+    {
+        return date('Y-m-d H:i:s', $date);
+    }
 }
 
 class TextPost extends Post
 {
-    public $post_body;
+    protected $post_body;
 
-// public function update($body, $id, $title, $last_update, $author)
-// {
-//     $this->post_body = $body;
-//     parent::update($id, $title, $last_update, $author);
-// }
+    function __construct($id, $title, $last_update, $author, $post_body)
+    {
+        parent::__construct($id, $title, $last_update, $author);
+        $this->post_body = $post_body;
+    }
 }
 
 class ImagePost extends Post
 {
-    public $image_url, $image_alt;
+    protected $image_url, $image_alt;
 
-// public function update($url, $alt, $id, $title, $last_update, $author)
-// {
-//     $this->image_url = $url;
-//     $this->image_alt = $alt;
-//     parent::update($id, $title, $last_update, $author);
-// }
+    function __construct($id, $title, $last_update, $author, $image_url, $image_alt)
+    {
+        parent::__construct($id, $title, $last_update, $author);
+        $this->image_url = $image_url;
+        $this->image_alt = $image_alt;
+    }
 }
