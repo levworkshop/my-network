@@ -1,8 +1,19 @@
 <?php
+require_once './config/config.php';
 require_once './providers/posts.php';
 require_once './providers/database.php';
-include './include/header.php'
-    ?>
+
+use App\Pdo\Database;
+
+session_start();
+
+if (!isset($_SESSION['userId']))
+{
+    header('location: login.php');
+}
+
+include './include/header.php';
+?>
 
 <h2 class="my-3">
     My Profile

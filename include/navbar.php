@@ -20,7 +20,7 @@
                 <div class="d-flex">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="register.php">Sign Up</a>
+                            <a class="nav-link active" href="signup.php">Sign Up</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="login.php">Login</a>

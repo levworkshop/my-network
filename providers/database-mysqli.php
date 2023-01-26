@@ -2,6 +2,10 @@
 
 require_once dirname(__FILE__, 2) . '/config/config.php';
 
+namespace App\Mysql;
+
+use Exception;
+
 class Database
 {
     private

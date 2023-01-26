@@ -1,6 +1,9 @@
 <?php
 
-require_once dirname(__FILE__, 2) . '/config/config.php';
+namespace App\Pdo;
+
+use PDO;
+use PDOException;
 
 class Database
 {
