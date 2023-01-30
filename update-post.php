@@ -1,6 +1,7 @@
 <?php
 require_once './config/config.php';
 require_once './providers/database.php';
+require_once './providers/utils.php';
 
 use App\Pdo\Database;
 
@@ -12,18 +13,7 @@ if (!isset($_SESSION['userId']))
 }
 
 $error = '';
-$posts = [];
-$post_id = $_GET['id'];
-if (!isset($post_id) || empty($post_id)) {
-    $error = "Error getting post id";
-}
-else {
-    $conn = new Database();
-    $posts = $conn->dbQuery(
-        "SELECT * FROM posts WHERE id = ?",
-        [$post_id]
-    );
-}
+$posts = post_by_id($_GET['id']);
 
 $_SESSION['token'] = sha1('Aa$124$!re');
 
@@ -64,11 +54,11 @@ if(count($posts) > 0) {
 <form action="update-post.php" method="post" accept-charset="UTF-8" class="p-4 form text-start">
     <div class="mb-3">
         <label for="title" class="form-label">Post Title</label>
-        <input type="text" name="title" id="title" value="<?= $posts[0]['title']?>" class="form-control">
+        <input type="text" name="title" id="title" value="<?= $posts['title']?>" class="form-control">
     </div>
     <div class="mb-3">
         <label for="body" class="form-label">Type your text</label>
-        <textarea name="body" id="body" cols="30" rows="10" class="form-control"><?=$posts[0]['body']?></textarea>
+        <textarea name="body" id="body" cols="30" rows="10" class="form-control"><?=$posts['body']?></textarea>
     </div>
     
     <input type="hidden" name="post_id" value="<?= $post_id ?>">

@@ -1,6 +1,7 @@
 <?php
 require_once './config/config.php';
 require_once './providers/database.php';
+require_once './providers/utils.php';
 
 use App\Pdo\Database;
 
@@ -12,18 +13,7 @@ if (!isset($_SESSION['userId']))
 }
 
 $error = '';
-$posts = [];
-$post_id = $_GET['id'];
-if (!isset($post_id) || empty($post_id)) {
-    $error = "Error getting post id";
-}
-else {
-    $conn = new Database();
-    $posts = $conn->dbQuery(
-        "SELECT * FROM posts WHERE id = ?",
-        [$post_id]
-    );
-}
+$posts = post_by_id($_GET['id']);
 
 $_SESSION['token'] = sha1('Aa$124$!re');
 
@@ -61,10 +51,10 @@ if(count($posts) > 0) {
         <div class="card-header">Are you sure?</div>
         <div class="card-body">
             <h5 class="card-title">
-                <?= $posts[0]['title'] ?>
+                <?= $posts['title'] ?>
             </h5>
             <p class="card-text">
-                <?= $posts[0]['body'] ?>
+                <?= $posts['body'] ?>
             </p>
             <p class="card-text">
                 <form action="delete-post.php" method="post" accept-charset="UTF-8" class="d-inline-block">
