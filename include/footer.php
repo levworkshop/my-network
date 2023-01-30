@@ -1,6 +1,6 @@
 </main>
 
-<footer class="bg-dark opacity-50 py-2 text-center text-white">
+<footer class="bg-dark opacity-50 py-2 text-center text-white fixed-bottom">
     <small>v1.0.0 | My Network license MIT.</small>
 </footer>
 
