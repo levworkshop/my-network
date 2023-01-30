@@ -67,6 +67,10 @@ foreach ($posts as $post) {
                 </small>
 
                 <div class="card-text text-end">
+                    <a href="update-post.php?id={$post->get('id')}" class="btn btn-info">
+                        Update
+                    </a>
+
                     <a href="delete-post.php?id={$post->get('id')}" class="btn btn-danger">
                         <i class="bi bi-trash"></i>
                     </a>

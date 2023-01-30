@@ -14,7 +14,7 @@ if (!isset($_SESSION['userId']))
 $error = '';
 $posts = [];
 $post_id = $_GET['id'];
-if (!isset($post_id)) {
+if (!isset($post_id) || empty($post_id)) {
     $error = "Error getting post id";
 }
 else {
