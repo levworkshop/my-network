@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <header>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
@@ -22,12 +26,15 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="signup.php">Sign Up</a>
                         </li>
+                        <?php if (!isset($_SESSION['userId'])) { ?>
                         <li class="nav-item">
                             <a class="nav-link active" href="login.php">Login</a>
                         </li>
+                        <?php } else { ?>
                         <li class="nav-item">
                             <a class="nav-link active" href="logout.php">Logout</a>
                         </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
