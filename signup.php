@@ -57,12 +57,11 @@ if(isset($_POST['submit']) && !empty($_SESSION['token'])) {
             )) {
 
                 $conn = new Database();
-
                 $hash = password_hash($password, PASSWORD_DEFAULT);
 
                 $conn->dbQuery(
                     "INSERT INTO users (`id`, `name`, `email`, `password`) VALUES (NULL,?,?,?)",
-                    [$name, $email, $password]
+                    [$name, $email, $hash]
                 );
 
                 if($conn->affectedCount() === 0) {

@@ -31,8 +31,7 @@ if (isset($_POST['submit']) && !empty($_SESSION['token']))
 
         $user = $result[0];
 
-        // if (!password_verify($password, $user->password)) {
-        if ($password !== $user['password']) {
+        if (!password_verify($password, $user['password'])) {
             throw new Exception("Failed to login, check password");
         }
 
