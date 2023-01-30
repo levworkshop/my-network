@@ -23,12 +23,18 @@ include './include/header.php';
     My Posts
 </h5>
 
+<div class="p-4">
+    <a href="add-post.php" class="btn btn-primary">
+        Add Post
+    </a>
+</div>
+
 <?php
 
-$query = 'SELECT posts.id, posts.title, posts.last_update, posts.body, posts.image_url, posts.image_alt, users.name FROM posts LEFT JOIN users ON posts.user_id = users.id';
+$query = 'SELECT posts.id, posts.title, posts.last_update, posts.body, posts.image_url, posts.image_alt, users.name FROM posts LEFT JOIN users ON posts.user_id = users.id WHERE posts.user_id = ?';
 
 $conn = new Database();
-$result = $conn->dbQuery($query);
+$result = $conn->dbQuery($query, [$_SESSION['userId']]);
 $posts = [];
 
 foreach ($result as $item) {
@@ -43,7 +49,7 @@ foreach ($result as $item) {
 
 foreach ($posts as $post) {
     echo <<<CARD
-        <div class="card text-start">
+        <div class="card text-start mb-3">
             <div class="card-header">
                 {$post->get('author')}
             </div>

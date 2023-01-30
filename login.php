@@ -41,8 +41,7 @@ if (isset($_POST['submit']) && !empty($_SESSION['token']))
     }
     catch (Exception $err) {
         $error = $err->getMessage();
-    }
-    
+    }  
 }
 
 include './include/header.php';
