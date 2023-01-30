@@ -65,6 +65,12 @@ foreach ($posts as $post) {
                     updated:
                     {$post->formatDate()}
                 </small>
+
+                <div class="card-text text-end">
+                    <a href="delete-post.php?id={$post->get('id')}" class="btn btn-danger">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </div>
             </div>
         </div>
     CARD;
