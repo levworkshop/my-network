@@ -42,7 +42,7 @@ if(isset($_POST['submit']) && !empty($_SESSION['token'])) {
             }
 
             $file_info = pathinfo($image_field['name']);
-            $file_ext = strtolower($file_info['extension']);
+            $file_ext = strtolower($file_info['extension']);      
 
             if(!in_array($file_ext, FILE_EXT))
             {
