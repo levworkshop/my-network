@@ -68,8 +68,7 @@ if(count($posts) > 0) {
     </div>
     <div class="mb-3">
         <label for="body" class="form-label">Type your text</label>
-        <textarea name="body" id="body" cols="30" rows="10" class="form-control"><?=$posts[0]['body']?>
-        </textarea>
+        <textarea name="body" id="body" cols="30" rows="10" class="form-control"><?=$posts[0]['body']?></textarea>
     </div>
     
     <input type="hidden" name="post_id" value="<?= $post_id ?>">

@@ -55,6 +55,7 @@ include './include/header.php';
     <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
 
     <input type="submit" value="Add" name="submit" class="btn btn-primary btn-lg">
+    <a href="profile.php" class="btn btn-secondary btn-lg">Cancel</a>
 </form>
 
 <p class="text-danger">
