@@ -13,6 +13,6 @@
 
 <body class="h-100 d-flex flex-column">
 
-    <?php include './include/navbar.php' ?>
+    <?php include_once './include/navbar.php' ?>
 
     <main class="flex-grow-1 px-3 text-center">

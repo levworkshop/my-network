@@ -13,7 +13,14 @@ if (!isset($_SESSION['userId']))
 }
 
 $error = '';
-$posts = post_by_id($_GET['id']);
+$post_id = $_GET['id'];
+$posts = [];
+
+try {
+    $posts = post_by_id($post_id);
+} catch (Exception $err) {
+    $error = $err->getMessage();
+}
 
 $_SESSION['token'] = sha1('Aa$124$!re');
 
